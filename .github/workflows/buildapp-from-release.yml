@@ -1,52 +1,7 @@
 name: Build sideloaded IPA from Release Assets
 
 on:
-    workflow_dispatch:
-        inputs:
-            decrypted_instagram_url:
-                description: "Decrypted Instagram IPA — direct URL"
-                default: ""
-                required: true
-                type: string
-            target:
-                description: "Instagram version (410 needs a 410.x IPA above)"
-                default: "latest"
-                required: false
-                type: choice
-                options:
-                    - "latest"
-                    - "410"
-            build_sideload:
-                description: "Sideload IPA — with plugins"
-                default: true
-                required: false
-                type: boolean
-            build_noplugins:
-                description: "No-plugins IPA — any sideloader / free account"
-                default: false
-                required: false
-                type: boolean
-            dup_bundle_id:
-                description: "Bundle id (no-plugins only, blank = com.burbn.instagram)"
-                default: ""
-                required: false
-                type: string
-            dup_name:
-                description: "App name on Home Screen (blank = Instagram)"
-                default: ""
-                required: false
-                type: string
-            release_tag:
-                description: "Release tag (blank = latest)"
-                default: ""
-                required: false
-                type: string
-            upload_artifact:
-                description: "Upload the built IPA"
-                default: true
-                required: false
-                type: boolean
-
+  workflow_dispatch:
 concurrency:
     group: ${{ github.workflow }}-${{ github.ref }}
     cancel-in-progress: true
